@@ -1,5 +1,6 @@
 package Main;
 import Player.Keyboard;
+import Player.Block;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,6 +8,7 @@ import java.awt.*;
 public class Game extends JPanel implements Runnable {
     Keyboard keyboard = new Keyboard();
     Thread gameThread;
+    Block block = new Block(keyboard);
     final double FPS = 60;
 
     public Game() {
@@ -26,11 +28,14 @@ public class Game extends JPanel implements Runnable {
     public void paintComponent(Graphics graph) {
         super.paintComponent(graph);
         Graphics2D graphics2D = (Graphics2D) graph;
+        block.drawBlock(graphics2D);
         graphics2D.dispose();
+
+
     }
 
     public void update() {
-
+        block.update();
     }
 
     @Override
